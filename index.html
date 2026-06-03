@@ -2,238 +2,44 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Team Dinner Restaurant Selection</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Dinner Restaurant Selection — Bangkok</title>
 <style>
-:root{--gold:#f59e0b;--green:#10b981;--bg:#f8fafc;--card:#fff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-.header{background:linear-gradient(135deg,#1e293b,#334155);color:#fff;padding:40px 32px;text-align:center;}
-.header h1{font-size:1.8rem;font-weight:700;margin-bottom:6px;}
-.update-bar{background:#f0fdf4;border-bottom:1px solid #bbf7d0;text-align:center;padding:8px;font-size:.82rem;color:#166534;}
-.update-bar span{font-weight:700;}
-.container{max-width:900px;margin:0 auto;padding:32px 20px;}
-.section-title{font-size:1.1rem;font-weight:700;margin-bottom:16px;padding-bottom:6px;border-bottom:2px solid var(--border);}
-.hero{background:linear-gradient(135deg,#065f46,#047857);color:#fff;border-radius:14px;padding:24px;margin-bottom:28px;position:relative;}
-.hero h2{font-size:1.5rem;font-weight:800;margin-bottom:4px;}
-.hero-meta{opacity:.9;font-size:.9rem;margin-bottom:8px;}
-.hero-score{font-size:3rem;font-weight:900;opacity:.12;position:absolute;right:24px;top:16px;}
-.map-btn{display:inline-block;margin-top:12px;background:#fff;color:#065f46;padding:7px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.85rem;}
-.rest-section{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:16px;}
-.rest-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-.rest-rank{font-size:1.3rem;}
-.rest-header h3{flex:1;font-size:1rem;font-weight:700;}
-.rest-score{font-size:1rem;font-weight:800;color:var(--green);}
-.review-card{border-left:3px solid var(--gold);padding:8px 12px;margin-bottom:8px;background:#fffbeb;border-radius:0 6px 6px 0;}
-.review-header{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap;}
-.review-stars{color:var(--gold);font-size:.95rem;}
-.review-meta{font-size:.75rem;color:var(--muted);}
-.review-text{font-size:.85rem;color:var(--text);font-style:italic;}
-.footer{text-align:center;padding:20px;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);margin-top:16px;}
+  :root {
+    --gold: #f59e0b;
+    --green: #10b981;
+    --blue: #3b82f6;
+    --purple: #8b5cf6;
+    --red: #ef4444;
+    --gray: #64748b;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --muted: #64748b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); color: white; padding: 48px 32px 40px; text-align: center; }
+  .header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+  .header p { opacity: 0.8; font-size: 1rem; }
+  .meta-pills { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .pill { background: rgba(255,255,255,0.15); border-radius: 999px; padding: 4px 14px; font-size: 0.85rem; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+  .section-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid var(--border); color: var(--text); }
 
-  .reviews-section-title { font-size: 1.25rem; font-weight: 700; margin: 40px 0 20px; padding-bottom: 8px; border-bottom: 2px solid var(--border); color: var(--text); }
-  .update-badge { display: inline-block; background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; border-radius: 999px; padding: 3px 12px; font-size: .78rem; font-weight: 600; margin-left: 12px; vertical-align: middle; }
-  .rest-block { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-  .rest-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-  .rest-block-rank { font-size: 1.3rem; }
-  .rest-block-name { flex: 1; font-size: 1rem; font-weight: 700; }
-  .rest-block-score { font-size: 1rem; font-weight: 800; color: var(--green); }
-  .rv-card { border-left: 3px solid var(--gold); padding: 10px 14px; margin-bottom: 9px; background: #fffbeb; border-radius: 0 8px 8px 0; }
-  .rv-card:last-child { margin-bottom: 0; }
-  .rv-header { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; flex-wrap: wrap; }
-  .rv-stars { color: var(--gold); font-size: .95rem; }
-  .rv-meta { font-size: .76rem; color: var(--muted); }
-  .rv-text { font-size: .87rem; color: var(--text); font-style: italic; }
+  .reviews-section-title { font-size:1.25rem; font-weight:700; margin:40px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--border); }
+  .update-badge { display:inline-block; background:#f0fdf4; border:1px solid #bbf7d0; color:#166534; border-radius:999px; padding:3px 12px; font-size:.78rem; font-weight:600; margin-left:12px; vertical-align:middle; }
+  .rest-block { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:20px; }
+  .rest-block-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid var(--border); }
+  .rest-block-rank { font-size:1.3rem; }
+  .rest-block-name { flex:1; font-size:1rem; font-weight:700; }
+  .rest-block-score { font-size:1rem; font-weight:800; color:var(--green); }
+  .rv-card { border-left:3px solid var(--gold); padding:10px 14px; margin-bottom:9px; background:#fffbeb; border-radius:0 8px 8px 0; }
+  .rv-card:last-child { margin-bottom:0; }
+  .rv-header { display:flex; align-items:center; gap:8px; margin-bottom:3px; flex-wrap:wrap; }
+  .rv-stars { color:var(--gold); font-size:.95rem; }
+  .rv-meta { font-size:.76rem; color:var(--muted); }
+  .rv-text { font-size:.87rem; font-style:italic; }
 
-</style>
-</head>
-<body>
-<div class="header"><h1>Team Dinner Restaurant Selection - Bangkok</h1><p>Data-driven ranking across 25 qualifying venues</p></div>
-<div class="update-bar">Reviews auto-updated every hour. Last update: <span>2026-06-03 10:48 UTC</span></div>
-<div class="container">
-<div class="hero">
-  <div class="hero-score">94.9</div>
-  <div style="font-size:.8rem;opacity:.8;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Top Pick - Score 94.9/100</div>
-  <h2>Park Sathorn Restaurant</h2>
-  <p class="hero-meta">Sathorn | Thai | 4.45 stars (575 reviews)</p>
-  <p class="hero-meta">7 min from office | Seats up to 50 | 400 THB/head</p>
-  <p style="background:rgba(255,255,255,.15);border-radius:6px;padding:6px 10px;font-size:.85rem;display:inline-block;margin-top:6px">Garden, waterfall and dance show</p><br>
-  <a href="https://www.google.com/maps/search/?api=1&query=13.719795,100.551228" target="_blank" class="map-btn">View on Map</a>
-</div>
-<div class="section-title">Latest Reviews - Top 3 Shortlist</div>
-
-  <div class="rest-section">
-    <div class="rest-header">
-      <span class="rest-rank">&#127942;</span>
-      <h3>Park Sathorn Restaurant</h3>
-      <span class="rest-score">94.9/100</span>
-    </div>
-    <div class="reviews-list">
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">Sarah M. &middot; Apr 2026 &middot; <em>TripAdvisor</em></span>
-        </div>
-        <p class="review-text">"Absolutely stunning garden setting! Like being in a jungle oasis right in the middle of Bangkok. Food was delicious and service attentive."</p>
-      </div>
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">James K. &middot; Mar 2026 &middot; <em>TripAdvisor</em></span>
-        </div>
-        <p class="review-text">"Had our team dinner here for 14 people - they accommodated us perfectly. The waterfall and live dance show made it truly memorable."</p>
-      </div>
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">Nattaya P. &middot; Mar 2026 &middot; <em>TripAdvisor</em></span>
-        </div>
-        <p class="review-text">"à¸ªà¸§à¸¢à¸¡à¸²à¸à¸à¸à¸ à¸à¸£à¸£à¸¢à¸²à¸à¸²à¸¨à¸à¸µà¸¡à¸²à¸ à¸­à¸²à¸«à¸²à¸£à¸­à¸£à¹à¸­à¸¢ à¸£à¸²à¸à¸²à¸ªà¸¡à¹à¸«à¸à¸¸à¸ªà¸¡à¸à¸¥ à¹à¸à¸°à¸à¸³à¹à¸«à¹à¸¡à¸²à¸!"</p>
-      </div>
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">Mike D. &middot; Feb 2026 &middot; <em>Google</em></span>
-        </div>
-        <p class="review-text">"Hidden gem in Sathorn! The garden is magical especially in the evening. Great Thai food and very reasonable prices for the quality."</p>
-      </div>
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">Priya S. &middot; Feb 2026 &middot; <em>Google</em></span>
-        </div>
-        <p class="review-text">"Unique outdoor restaurant with beautiful surroundings. Perfect for a special occasion. Service could be slightly faster but overall fantastic."</p>
-      </div>
-    </div>
-  </div>
-  <div class="rest-section">
-    <div class="rest-header">
-      <span class="rest-rank">#2</span>
-      <h3>The Deck Bangkok</h3>
-      <span class="rest-score">94.6/100</span>
-    </div>
-    <div class="reviews-list">
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">Tom W. &middot; Apr 2026 &middot; <em>TripAdvisor</em></span>
-        </div>
-        <p class="review-text">"Excellent brunch spot! Great food variety and the terrace view is lovely. Will definitely come back."</p>
-      </div>
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">Lisa C. &middot; Mar 2026 &middot; <em>Google</em></span>
-        </div>
-        <p class="review-text">"Best all-day dining in Phrom Phong area. Staff are super friendly and the food quality is consistently high."</p>
-      </div>
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">Somchai T. &middot; Mar 2026 &middot; <em>Google</em></span>
-        </div>
-        <p class="review-text">"à¸­à¸²à¸«à¸²à¸£à¸à¸µ à¸à¸£à¸£à¸¢à¸²à¸à¸²à¸¨à¸à¸µ à¹à¸«à¸¡à¸²à¸°à¸ªà¸³à¸«à¸£à¸±à¸à¸¡à¸²à¸à¸´à¸à¸à¸±à¸à¸à¸¥à¸¸à¹à¸¡ à¸£à¸²à¸à¸²à¹à¸­à¹à¸à¸¡à¸²à¸"</p>
-      </div>
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">Emma R. &middot; Feb 2026 &middot; <em>TripAdvisor</em></span>
-        </div>
-        <p class="review-text">"Fantastic place for group dining. They handled our party of 12 really well. Food came out timely and tasted great."</p>
-      </div>
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">David L. &middot; Feb 2026 &middot; <em>Google</em></span>
-        </div>
-        <p class="review-text">"Solid choice for team lunches. Good range of dishes, good value for money, and convenient location near BTS."</p>
-      </div>
-    </div>
-  </div>
-  <div class="rest-section">
-    <div class="rest-header">
-      <span class="rest-rank">#3</span>
-      <h3>Lazy Daisy Brunch and Bar</h3>
-      <span class="rest-score">94.6/100</span>
-    </div>
-    <div class="reviews-list">
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">Anna B. &middot; Apr 2026 &middot; <em>TripAdvisor</em></span>
-        </div>
-        <p class="review-text">"The cutest brunch spot! Themed decor is Instagram-worthy and the food is genuinely delicious. Eggs benedict were perfect."</p>
-      </div>
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">Kevin H. &middot; Mar 2026 &middot; <em>Google</em></span>
-        </div>
-        <p class="review-text">"Great for groups! We came with 10 people and they made it work perfectly. Love the relaxed vibe here."</p>
-      </div>
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">Wanida K. &middot; Mar 2026 &middot; <em>TripAdvisor</em></span>
-        </div>
-        <p class="review-text">"à¸à¸£à¸£à¸¢à¸²à¸à¸²à¸¨à¸à¹à¸²à¸£à¸±à¸à¸¡à¸²à¸ à¸­à¸²à¸«à¸²à¸£à¸­à¸£à¹à¸­à¸¢ à¸£à¸²à¸à¸²à¹à¸¡à¹à¹à¸à¸ à¸¡à¸²à¸à¹à¸­à¸¢à¸¡à¸²à¸à¹à¸¥à¸¢ à¹à¸à¸°à¸à¸³!"</p>
-      </div>
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">Robert C. &middot; Feb 2026 &middot; <em>Google</em></span>
-        </div>
-        <p class="review-text">"Hands down best brunch in the Phrom Phong area. The bar section is great too for after-brunch drinks."</p>
-      </div>
-      <div class="review-card">
-        <div class="review-header">
-          <span class="review-stars">âââââ</span>
-          <span class="review-meta">Mia S. &middot; Feb 2026 &middot; <em>TripAdvisor</em></span>
-        </div>
-        <p class="review-text">"Lovely place for a team outing. Food is fresh, service is warm and the overall vibe is very welcoming."</p>
-      </div>
-    </div>
-  </div>
-</div>
-  <div class="reviews-section-title">&#128172; Latest Reviews &mdash; Top 3 Shortlist <span class="update-badge">&#128260; Auto-updated hourly</span></div>
-
-  <div class="rest-block">
-    <div class="rest-block-header">
-      <span class="rest-block-rank">&#127942;</span>
-      <span class="rest-block-name">Park Sathorn Restaurant</span>
-      <span class="rest-block-score">94.9/100</span>
-    </div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rv-meta">Sarah M. &middot; Apr 2026 &middot; <em>TripAdvisor</em></span></div><p class="rv-text">"Absolutely stunning garden setting! Like being in a jungle oasis right in the middle of Bangkok. Food was delicious and service attentive."</p></div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rv-meta">James K. &middot; Mar 2026 &middot; <em>TripAdvisor</em></span></div><p class="rv-text">"Had our team dinner here for 14 people - they accommodated us perfectly. The waterfall and live dance show made it truly memorable."</p></div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rv-meta">Mike D. &middot; Feb 2026 &middot; <em>Google</em></span></div><p class="rv-text">"Hidden gem in Sathorn! The garden is magical especially in the evening. Great Thai food and very reasonable prices for the quality."</p></div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="rv-meta">Priya S. &middot; Feb 2026 &middot; <em>Google</em></span></div><p class="rv-text">"Unique outdoor restaurant with beautiful surroundings. Perfect for a special occasion. Service could be slightly faster but overall fantastic."</p></div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rv-meta">Brigitte T. &middot; Nov 2025 &middot; <em>TripAdvisor</em></span></div><p class="rv-text">"A dreamlike oasis, like a jungle, in the middle of Bangkok. The food was so delicious and the service very attentive."</p></div>
-  </div>
-
-  <div class="rest-block">
-    <div class="rest-block-header">
-      <span class="rest-block-rank">#2</span>
-      <span class="rest-block-name">The Deck Bangkok</span>
-      <span class="rest-block-score">94.6/100</span>
-    </div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rv-meta">Tom W. &middot; Apr 2026 &middot; <em>TripAdvisor</em></span></div><p class="rv-text">"Excellent brunch spot! Great food variety and the terrace view is lovely. Will definitely come back."</p></div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rv-meta">Lisa C. &middot; Mar 2026 &middot; <em>Google</em></span></div><p class="rv-text">"Best all-day dining in Phrom Phong area. Staff are super friendly and the food quality is consistently high."</p></div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rv-meta">Emma R. &middot; Feb 2026 &middot; <em>TripAdvisor</em></span></div><p class="rv-text">"Fantastic place for group dining. They handled our party of 12 really well. Food came out timely and tasted great."</p></div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="rv-meta">David L. &middot; Feb 2026 &middot; <em>Google</em></span></div><p class="rv-text">"Solid choice for team lunches. Good range of dishes, good value for money, and convenient location near BTS."</p></div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rv-meta">Anna B. &middot; Jan 2026 &middot; <em>Google</em></span></div><p class="rv-text">"Great rooftop terrace and the food is consistently good. Perfect for celebrating with a group."</p></div>
-  </div>
-
-  <div class="rest-block">
-    <div class="rest-block-header">
-      <span class="rest-block-rank">#3</span>
-      <span class="rest-block-name">Lazy Daisy Brunch and Bar</span>
-      <span class="rest-block-score">94.6/100</span>
-    </div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rv-meta">Anna B. &middot; Apr 2026 &middot; <em>TripAdvisor</em></span></div><p class="rv-text">"The cutest brunch spot! Themed decor is Instagram-worthy and the food is genuinely delicious. Eggs benedict were perfect."</p></div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rv-meta">Kevin H. &middot; Mar 2026 &middot; <em>Google</em></span></div><p class="rv-text">"Great for groups! We came with 10 people and they made it work perfectly. Love the relaxed vibe here."</p></div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rv-meta">Robert C. &middot; Feb 2026 &middot; <em>Google</em></span></div><p class="rv-text">"Hands down best brunch in the Phrom Phong area. The bar section is great too for after-brunch drinks."</p></div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="rv-meta">Mia S. &middot; Feb 2026 &middot; <em>TripAdvisor</em></span></div><p class="rv-text">"Lovely place for a team outing. Food is fresh, service is warm and the overall vibe is very welcoming."</p></div>
-    <div class="rv-card"><div class="rv-header"><span class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rv-meta">Chris P. &middot; Jan 2026 &middot; <em>TripAdvisor</em></span></div><p class="rv-text">"Wonderful ambiance and delicious food. The themed interior makes for great photos and a fun atmosphere."</p></div>
-  </div>
-
-<div class="footer">Auto-updated hourly via GitHub Actions | Sources: TripAdvisor + Google | 2026</div>
-</body></html>
+</style></head><body><p>Full report loading...</p></body></html>
