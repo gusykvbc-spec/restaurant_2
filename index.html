@@ -2,22 +2,59 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Team Dinner Restaurant Selection</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Dinner Restaurant Selection - Bangkok</title>
 <style>
-:root{--gold:#f59e0b;--green:#10b981;--bg:#f8fafc;--card:#fff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;}
+:root{--gold:#f59e0b;--green:#10b981;--blue:#3b82f6;--bg:#f8fafc;--card:#fff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
 .header{background:linear-gradient(135deg,#1e293b,#334155);color:#fff;padding:40px 32px;text-align:center;}
-.header h1{font-size:1.8rem;font-weight:700;margin-bottom:6px;}
-.update-bar{background:#f0fdf4;border-bottom:1px solid #bbf7d0;text-align:center;padding:8px;font-size:.82rem;color:#166534;}
+.header h1{font-size:2rem;font-weight:800;margin-bottom:6px;}
+.header p{opacity:.8;font-size:.95rem;}
+.update-bar{background:#f0fdf4;border-bottom:1px solid #bbf7d0;text-align:center;padding:10px;font-size:.85rem;color:#166534;}
 .update-bar span{font-weight:700;}
-.container{max-width:900px;margin:0 auto;padding:32px 20px;}
-.section-title{font-size:1.1rem;font-weight:700;margin-bottom:16px;padding-bottom:6px;border-bottom:2px solid var(--border);}
-.hero{background:linear-gradient(135deg,#065f46,#047857);color:#fff;border-radius:14px;padding:24px;margin-bottom:28px;position:relative;}
-.hero h2{font-size:1.5rem;font-weight:800;margin-bottom:4px;}
-.hero-meta{opacity:.9;font-size:.9rem;margin-bottom:8px;}
-.hero-score{font-size:3rem;font-weight:900;opacity:.12;position:absolute;right:24px;top:16px;}
-.map-btn{display:inline-block;margin-top:12px;background:#fff;color:#065f46;padding:7px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.85rem;}
+.container{max-width:1000px;margin:0 auto;padding:32px 20px;}
+.section-title{font-size:1.15rem;font-weight:700;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--border);color:var(--text);}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,#065f46,#047857);color:#fff;border-radius:16px;padding:28px;margin-bottom:32px;position:relative;overflow:hidden;}
+.hero-bg-score{font-size:8rem;font-weight:900;opacity:.08;position:absolute;right:16px;top:-10px;line-height:1;}
+.hero-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;opacity:.8;margin-bottom:6px;}
+.hero h2{font-size:1.7rem;font-weight:800;margin-bottom:6px;}
+.hero-meta{opacity:.9;font-size:.9rem;margin-bottom:4px;}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.15);border-radius:6px;padding:5px 12px;font-size:.85rem;margin-top:10px;}
+.map-btn{display:inline-block;margin-top:12px;background:#fff;color:#065f46;padding:8px 18px;border-radius:8px;text-decoration:none;font-weight:700;font-size:.85rem;margin-left:8px;}
+
+/* Top 5 Cards */
+.top5-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px;display:flex;align-items:center;gap:14px;}
+.top5-medal{font-size:1.8rem;width:40px;text-align:center;flex-shrink:0;}
+.top5-info{flex:1;}
+.top5-name{font-weight:700;font-size:1rem;margin-bottom:3px;}
+.top5-meta{font-size:.8rem;color:var(--muted);margin-bottom:6px;}
+.score-bar-bg{background:#e2e8f0;border-radius:4px;height:6px;overflow:hidden;}
+.score-bar-fill{height:100%;border-radius:4px;transition:width .6s;}
+.top5-score{font-size:1.5rem;font-weight:900;min-width:55px;text-align:right;}
+
+/* Full Ranking Table */
+.table-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;background:var(--card);font-size:.85rem;}
+thead{background:#f1f5f9;}
+th{padding:10px 12px;text-align:left;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;}
+td{padding:10px 12px;border-top:1px solid var(--border);}
+tr:hover{background:#f8fafc;}
+.td-rank{font-size:1rem;text-align:center;}
+.td-name{font-weight:600;}
+.score-high{color:#10b981;font-weight:800;}
+.score-mid{color:#3b82f6;font-weight:700;}
+.score-low{color:#6b7280;font-weight:600;}
+
+/* Scoring Model */
+.weights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;}
+.weight-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;}
+.weight-pct{font-size:1.5rem;font-weight:800;color:var(--blue);}
+.weight-label{font-size:.8rem;color:var(--muted);margin-top:2px;}
+
+/* Reviews */
 .rest-section{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:16px;}
 .rest-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
 .rest-rank{font-size:1.3rem;}
@@ -27,28 +64,397 @@ body{font-family:-apple-system,sans-serif;background:var(--bg);color:var(--text)
 .review-header{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap;}
 .review-stars{color:var(--gold);font-size:.95rem;}
 .review-meta{font-size:.75rem;color:var(--muted);}
-.review-text{font-size:.85rem;color:var(--text);font-style:italic;}
-.footer{text-align:center;padding:20px;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);margin-top:16px;}
+.review-text{font-size:.85rem;font-style:italic;}
+
+.footer{text-align:center;padding:24px;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);margin-top:16px;}
 </style>
 </head>
 <body>
-<div class="header"><h1>Team Dinner Restaurant Selection - Bangkok</h1><p>Data-driven ranking across 25 qualifying venues</p></div>
-<div class="update-bar">Reviews auto-updated every hour. Last update: <span>2026-06-05 11:40 UTC</span></div>
-<div class="container">
-<div class="hero">
-  <div class="hero-score">94.9</div>
-  <div style="font-size:.8rem;opacity:.8;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Top Pick - Score 94.9/100</div>
-  <h2>Park Sathorn Restaurant</h2>
-  <p class="hero-meta">Sathorn | Thai | 4.45 stars (575 reviews)</p>
-  <p class="hero-meta">7 min from office | Seats up to 50 | 400 THB/head</p>
-  <p style="background:rgba(255,255,255,.15);border-radius:6px;padding:6px 10px;font-size:.85rem;display:inline-block;margin-top:6px">Garden, waterfall and dance show</p><br>
-  <a href="https://www.google.com/maps/search/?api=1&query=13.719795,100.551228" target="_blank" class="map-btn">View on Map</a>
-</div>
-<div class="section-title">Latest Reviews - Top 3 Shortlist</div>
 
+<div class="header">
+  <h1>🍽️ Team Dinner Restaurant Selection</h1>
+  <p>Data-driven ranking across 25 qualifying venues in Bangkok</p>
+</div>
+
+<div class="update-bar">⏱ Reviews auto-updated every hour &nbsp;|&nbsp; Last update: <span>2026-06-05 16:08 UTC</span></div>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg-score">94.9</div>
+    <div class="hero-label">🏆 Top Pick — Score 94.9 / 100</div>
+    <h2>Park Sathorn Restaurant</h2>
+    <p class="hero-meta">📍 Sathorn &nbsp;|&nbsp; Thai Cuisine &nbsp;|&nbsp; ⭐ 4.45 (575 reviews)</p>
+    <p class="hero-meta">🚗 7 min from office &nbsp;|&nbsp; 👥 Seats up to 50 &nbsp;|&nbsp; 💰 ฿400/head</p>
+    <span class="hero-badge">🌿 Garden · Waterfall · Live Dance Show</span>
+    <a href="https://www.google.com/maps/search/?api=1&query=13.719795,100.551228" target="_blank" class="map-btn">📍 View on Map</a>
+  </div>
+
+  <!-- TOP 5 -->
+  <div class="section-title">🥇 Top 5 Shortlist</div>
+  
+    <div class="top5-card">
+      <div class="top5-medal">🥇</div>
+      <div class="top5-info">
+        <div class="top5-name">Park Sathorn Restaurant</div>
+        <div class="top5-meta">Sathorn | Thai | ⭐4.45 (575 reviews) | ฿400/head</div>
+        <div class="score-bar-bg"><div class="score-bar-fill" style="width:94%;background:#10b981"></div></div>
+      </div>
+      <div class="top5-score" style="color:#10b981">94.9</div>
+    </div>
+    <div class="top5-card">
+      <div class="top5-medal">🥈</div>
+      <div class="top5-info">
+        <div class="top5-name">The Deck Bangkok</div>
+        <div class="top5-meta">Phrom Phong | International | ⭐4.4 (890 reviews) | ฿450/head</div>
+        <div class="score-bar-bg"><div class="score-bar-fill" style="width:94%;background:#3b82f6"></div></div>
+      </div>
+      <div class="top5-score" style="color:#3b82f6">94.6</div>
+    </div>
+    <div class="top5-card">
+      <div class="top5-medal">🥉</div>
+      <div class="top5-info">
+        <div class="top5-name">Lazy Daisy Brunch and Bar</div>
+        <div class="top5-meta">Phrom Phong | Western/Brunch | ⭐4.5 (1,200 reviews) | ฿350/head</div>
+        <div class="score-bar-bg"><div class="score-bar-fill" style="width:94%;background:#3b82f6"></div></div>
+      </div>
+      <div class="top5-score" style="color:#3b82f6">94.6</div>
+    </div>
+    <div class="top5-card">
+      <div class="top5-medal">4️⃣</div>
+      <div class="top5-info">
+        <div class="top5-name">Roast Coffee & Eatery</div>
+        <div class="top5-meta">EmQuartier | Western/Brunch | ⭐4.3 (2,100 reviews) | ฿400/head</div>
+        <div class="score-bar-bg"><div class="score-bar-fill" style="width:93%;background:#6b7280"></div></div>
+      </div>
+      <div class="top5-score" style="color:#6b7280">93.1</div>
+    </div>
+    <div class="top5-card">
+      <div class="top5-medal">5️⃣</div>
+      <div class="top5-info">
+        <div class="top5-name">Savelberg</div>
+        <div class="top5-meta">Phrom Phong | French | ⭐4.5 (450 reviews) | ฿900/head</div>
+        <div class="score-bar-bg"><div class="score-bar-fill" style="width:92%;background:#6b7280"></div></div>
+      </div>
+      <div class="top5-score" style="color:#6b7280">92.8</div>
+    </div>
+
+  <!-- FULL RANKING -->
+  <div class="section-title">📋 Full Ranking — All 25 Restaurants</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Restaurant</th>
+          <th>Area</th>
+          <th>Cuisine</th>
+          <th>Rating</th>
+          <th>Reviews</th>
+          <th>Price/head</th>
+          <th>Capacity</th>
+          <th>Distance</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+    <tr>
+      <td class="td-rank">🏆</td>
+      <td class="td-name">Park Sathorn Restaurant</td>
+      <td>Sathorn</td>
+      <td>Thai</td>
+      <td>⭐ 4.45</td>
+      <td>575</td>
+      <td>฿400</td>
+      <td>50</td>
+      <td>7 min</td>
+      <td class="score-high">94.9</td>
+    </tr>    <tr>
+      <td class="td-rank">🥈</td>
+      <td class="td-name">The Deck Bangkok</td>
+      <td>Phrom Phong</td>
+      <td>International</td>
+      <td>⭐ 4.4</td>
+      <td>890</td>
+      <td>฿450</td>
+      <td>60</td>
+      <td>12 min</td>
+      <td class="score-high">94.6</td>
+    </tr>    <tr>
+      <td class="td-rank">🥉</td>
+      <td class="td-name">Lazy Daisy Brunch and Bar</td>
+      <td>Phrom Phong</td>
+      <td>Western/Brunch</td>
+      <td>⭐ 4.5</td>
+      <td>1,200</td>
+      <td>฿350</td>
+      <td>45</td>
+      <td>12 min</td>
+      <td class="score-high">94.6</td>
+    </tr>    <tr>
+      <td class="td-rank">4</td>
+      <td class="td-name">Roast Coffee & Eatery</td>
+      <td>EmQuartier</td>
+      <td>Western/Brunch</td>
+      <td>⭐ 4.3</td>
+      <td>2,100</td>
+      <td>฿400</td>
+      <td>55</td>
+      <td>14 min</td>
+      <td class="score-high">93.1</td>
+    </tr>    <tr>
+      <td class="td-rank">5</td>
+      <td class="td-name">Savelberg</td>
+      <td>Phrom Phong</td>
+      <td>French</td>
+      <td>⭐ 4.5</td>
+      <td>450</td>
+      <td>฿900</td>
+      <td>35</td>
+      <td>12 min</td>
+      <td class="score-high">92.8</td>
+    </tr>    <tr>
+      <td class="td-rank">6</td>
+      <td class="td-name">Soul Food Mahanakorn</td>
+      <td>Ekkamai</td>
+      <td>Thai</td>
+      <td>⭐ 4.35</td>
+      <td>1,800</td>
+      <td>฿350</td>
+      <td>50</td>
+      <td>20 min</td>
+      <td class="score-mid">91.7</td>
+    </tr>    <tr>
+      <td class="td-rank">7</td>
+      <td class="td-name">After You Dessert Cafe</td>
+      <td>Thonglor</td>
+      <td>Cafe/Dessert</td>
+      <td>⭐ 4.25</td>
+      <td>3,200</td>
+      <td>฿250</td>
+      <td>40</td>
+      <td>17 min</td>
+      <td class="score-mid">91.2</td>
+    </tr>    <tr>
+      <td class="td-rank">8</td>
+      <td class="td-name">Peppina</td>
+      <td>Ekkamai</td>
+      <td>Italian</td>
+      <td>⭐ 4.4</td>
+      <td>980</td>
+      <td>฿500</td>
+      <td>50</td>
+      <td>20 min</td>
+      <td class="score-mid">90.8</td>
+    </tr>    <tr>
+      <td class="td-rank">9</td>
+      <td class="td-name">The Local Restaurant</td>
+      <td>Sukhumvit 23</td>
+      <td>Thai</td>
+      <td>⭐ 4.35</td>
+      <td>760</td>
+      <td>฿450</td>
+      <td>45</td>
+      <td>16 min</td>
+      <td class="score-mid">90.5</td>
+    </tr>    <tr>
+      <td class="td-rank">10</td>
+      <td class="td-name">Appia</td>
+      <td>Sukhumvit 31</td>
+      <td>Italian</td>
+      <td>⭐ 4.4</td>
+      <td>520</td>
+      <td>฿600</td>
+      <td>40</td>
+      <td>18 min</td>
+      <td class="score-mid">90.3</td>
+    </tr>    <tr>
+      <td class="td-rank">11</td>
+      <td class="td-name">Quince</td>
+      <td>Sukhumvit 45</td>
+      <td>International</td>
+      <td>⭐ 4.3</td>
+      <td>430</td>
+      <td>฿700</td>
+      <td>35</td>
+      <td>22 min</td>
+      <td class="score-mid">89.6</td>
+    </tr>    <tr>
+      <td class="td-rank">12</td>
+      <td class="td-name">Meatlicious</td>
+      <td>Silom</td>
+      <td>BBQ/Grill</td>
+      <td>⭐ 4.2</td>
+      <td>650</td>
+      <td>฿550</td>
+      <td>55</td>
+      <td>15 min</td>
+      <td class="score-mid">89.1</td>
+    </tr>    <tr>
+      <td class="td-rank">13</td>
+      <td class="td-name">Somboon Seafood (Silom)</td>
+      <td>Silom</td>
+      <td>Seafood</td>
+      <td>⭐ 4.25</td>
+      <td>1,500</td>
+      <td>฿500</td>
+      <td>80</td>
+      <td>15 min</td>
+      <td class="score-mid">88.9</td>
+    </tr>    <tr>
+      <td class="td-rank">14</td>
+      <td class="td-name">Thara Thong</td>
+      <td>Sathorn</td>
+      <td>Thai</td>
+      <td>⭐ 4.15</td>
+      <td>340</td>
+      <td>฿380</td>
+      <td>60</td>
+      <td>8 min</td>
+      <td class="score-mid">88.4</td>
+    </tr>    <tr>
+      <td class="td-rank">15</td>
+      <td class="td-name">Baani Garden Cafe</td>
+      <td>Thonglor</td>
+      <td>Cafe/Thai</td>
+      <td>⭐ 4.35</td>
+      <td>280</td>
+      <td>฿300</td>
+      <td>40</td>
+      <td>17 min</td>
+      <td class="score-mid">88.1</td>
+    </tr>    <tr>
+      <td class="td-rank">16</td>
+      <td class="td-name">Ginzado</td>
+      <td>Silom</td>
+      <td>Japanese</td>
+      <td>⭐ 4.2</td>
+      <td>410</td>
+      <td>฿600</td>
+      <td>35</td>
+      <td>14 min</td>
+      <td class="score-low">87.5</td>
+    </tr>    <tr>
+      <td class="td-rank">17</td>
+      <td class="td-name">On Lok Yun</td>
+      <td>Charoen Krung</td>
+      <td>Chinese/Local</td>
+      <td>⭐ 4.3</td>
+      <td>1,100</td>
+      <td>฿150</td>
+      <td>50</td>
+      <td>25 min</td>
+      <td class="score-low">87.2</td>
+    </tr>    <tr>
+      <td class="td-rank">18</td>
+      <td class="td-name">Charcoal Tandoor Grill</td>
+      <td>Sathorn</td>
+      <td>Indian/Grill</td>
+      <td>⭐ 4.1</td>
+      <td>380</td>
+      <td>฿550</td>
+      <td>45</td>
+      <td>9 min</td>
+      <td class="score-low">86.9</td>
+    </tr>    <tr>
+      <td class="td-rank">19</td>
+      <td class="td-name">Maguro Japanese Restaurant</td>
+      <td>Sukhumvit 26</td>
+      <td>Japanese</td>
+      <td>⭐ 4.15</td>
+      <td>290</td>
+      <td>฿500</td>
+      <td>40</td>
+      <td>15 min</td>
+      <td class="score-low">86.5</td>
+    </tr>    <tr>
+      <td class="td-rank">20</td>
+      <td class="td-name">Namsaah Bottling Trust</td>
+      <td>Silom</td>
+      <td>Thai Fusion</td>
+      <td>⭐ 4.2</td>
+      <td>470</td>
+      <td>฿450</td>
+      <td>45</td>
+      <td>14 min</td>
+      <td class="score-low">86.2</td>
+    </tr>    <tr>
+      <td class="td-rank">21</td>
+      <td class="td-name">Bo.lan</td>
+      <td>Sukhumvit 53</td>
+      <td>Thai Fine</td>
+      <td>⭐ 4.4</td>
+      <td>920</td>
+      <td>฿1800</td>
+      <td>30</td>
+      <td>22 min</td>
+      <td class="score-low">85.8</td>
+    </tr>    <tr>
+      <td class="td-rank">22</td>
+      <td class="td-name">Paste Bangkok</td>
+      <td>Gaysorn</td>
+      <td>Thai Fine</td>
+      <td>⭐ 4.35</td>
+      <td>680</td>
+      <td>฿1200</td>
+      <td>35</td>
+      <td>20 min</td>
+      <td class="score-low">85.4</td>
+    </tr>    <tr>
+      <td class="td-rank">23</td>
+      <td class="td-name">Indus Restaurant</td>
+      <td>Sukhumvit 26</td>
+      <td>Indian</td>
+      <td>⭐ 4.1</td>
+      <td>350</td>
+      <td>฿450</td>
+      <td>50</td>
+      <td>15 min</td>
+      <td class="score-low">84.9</td>
+    </tr>    <tr>
+      <td class="td-rank">24</td>
+      <td class="td-name">Biscotti</td>
+      <td>Ploenchit</td>
+      <td>Italian</td>
+      <td>⭐ 4.05</td>
+      <td>420</td>
+      <td>฿800</td>
+      <td>60</td>
+      <td>22 min</td>
+      <td class="score-low">84.3</td>
+    </tr>    <tr>
+      <td class="td-rank">25</td>
+      <td class="td-name">Vientiane Kitchen</td>
+      <td>Ekkamai</td>
+      <td>Lao/Thai</td>
+      <td>⭐ 4.15</td>
+      <td>560</td>
+      <td>฿300</td>
+      <td>70</td>
+      <td>20 min</td>
+      <td class="score-low">83.9</td>
+    </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SCORING MODEL -->
+  <div class="section-title">⚖️ Scoring Model Weights</div>
+  <div class="weights-grid">
+    <div class="weight-card"><div class="weight-pct">35%</div><div class="weight-label">Customer Rating</div></div>
+    <div class="weight-card"><div class="weight-pct">20%</div><div class="weight-label">Group Suitability</div></div>
+    <div class="weight-card"><div class="weight-pct">20%</div><div class="weight-label">Value for Money</div></div>
+    <div class="weight-card"><div class="weight-pct">15%</div><div class="weight-label">Distance from Office</div></div>
+    <div class="weight-card"><div class="weight-pct">10%</div><div class="weight-label">Review Volume</div></div>
+  </div>
+
+  <!-- LATEST REVIEWS -->
+  <div class="section-title">💬 Latest Reviews — Top 3 Shortlist <small style="font-weight:400;color:var(--muted);font-size:.8rem">Auto-updated hourly</small></div>
+  
   <div class="rest-section">
     <div class="rest-header">
-      <span class="rest-rank">&#127942;</span>
+      <span class="rest-rank">🏆</span>
       <h3>Park Sathorn Restaurant</h3>
       <span class="rest-score">94.9/100</span>
     </div>
@@ -178,6 +584,9 @@ body{font-family:-apple-system,sans-serif;background:var(--bg);color:var(--text)
       </div>
     </div>
   </div>
+
 </div>
-<div class="footer">Auto-updated hourly via GitHub Actions | Sources: TripAdvisor + Google | 2026</div>
-</body></html>
+
+<div class="footer">Auto-updated hourly via GitHub Actions &nbsp;|&nbsp; Sources: TripAdvisor + Google &nbsp;|&nbsp; 2026</div>
+</body>
+</html>
